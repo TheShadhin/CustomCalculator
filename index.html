@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letter Value Calculator</title>
+  <style>
+    /* Basic reset and styling */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    /* Center the calculator and style the background */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f0f4f8;
+      padding: 20px;
+    }
+
+    /* Main container styling */
+    .calculator {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    /* Title styling */
+    h2 {
+      color: #333;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    /* Input styling */
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    /* Button styling */
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Result paragraph styling */
+    #result {
+      margin-top: 15px;
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 1.2rem;
+      }
+      input[type="text"], button {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h2>SA Calculator</h2>
+    <label for="letterInput">Enter letters:</label>
+    <input type="text" id="letterInput" placeholder="enter price code">
+    <button onclick="calculateValue()">Get Value</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    const letterValues = {
+      'M': 1,
+      'N': 2,
+      'O': 3,
+      'P': 4,
+      'Q': 5,
+      'R': 6,
+      'S': 7,
+      'T': 8,
+      'U': 9,
+      'X': 0,
+      'A': 0,
+      'B': 0,
+      'C': 0
+    };
+
+    function calculateValue() {
+      const input = document.getElementById('letterInput').value.toUpperCase();
+      let resultString = "";
+
+      for (let letter of input) {
+        if (letterValues.hasOwnProperty(letter)) {
+          resultString += letterValues[letter];
+        } else {
+          resultString += "?"; // Using "?" to represent any invalid characters
+        }
+      }
+
+      document.getElementById('result').textContent = 
+        `Buying Price: ${resultString}`;
+    }
+  </script>
+</body>
+</html>
